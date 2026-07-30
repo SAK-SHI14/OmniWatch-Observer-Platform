@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: omniwatch-observer
+    name: omniwatch-observer-sakshi
     env: docker
     dockerfilePath: ./Dockerfile
     plan: free
