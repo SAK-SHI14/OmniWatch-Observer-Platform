@@ -17,7 +17,7 @@ from src.processor.stats import StatsProcessor
 
 # --- PAGE CONFIGURATION (Run once) ---
 st.set_page_config(
-    page_title="API Reliability Monitor",
+    page_title="OmniWatch Command Center",
     page_icon="📡",
     layout="wide",
     initial_sidebar_state="collapsed"
@@ -63,7 +63,7 @@ processor = StatsProcessor(window_minutes=window_minutes)
 # --- STATIC LAYOUT (Rendered Once) ---
 col_head_1, col_head_2 = st.columns([3, 1])
 with col_head_1:
-    st.title("📡 API Reliability Command Center")
+    st.title("📡 OmniWatch Command Center")
 with col_head_2:
     # Placeholder for the clock to avoid full header redraws
     clock_placeholder = st.empty()

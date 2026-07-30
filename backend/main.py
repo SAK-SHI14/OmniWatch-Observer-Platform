@@ -43,7 +43,7 @@ async def lifespan(app: FastAPI):
     yield
     logger.info("SHUTDOWN: Stopping backend services...")
 
-app = FastAPI(title="Unified Observability API", lifespan=lifespan)
+app = FastAPI(title="OmniWatch Telemetry API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,

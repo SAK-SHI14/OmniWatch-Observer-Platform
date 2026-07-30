@@ -1,4 +1,4 @@
-# API Reliability Monitoring System
+# OmniWatch API Reliability Subsystem
 
 ## Overview
 A real-time, production-grade system to monitor the reliability and latency of public APIs. It actively pings configured endpoints, stores raw metrics, and visualizes live health status on an auto-refreshing dashboard.

@@ -38,7 +38,7 @@ def load_config(config_path=None):
         return {}
 
 def run_monitor():
-    logger.info("Starting API Reliability Monitor...")
+    logger.info("Starting OmniWatch Telemetry Engine...")
     
     config = load_config()
     if not config:
