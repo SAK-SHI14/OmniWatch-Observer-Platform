@@ -53,9 +53,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Paths to the two databases
-API_DB_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "api_reliability_monitor", "data", "observability.db")
-LLM_DB_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "llm_observability_ollama", "data", "observability.db")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+API_DB_PATH = os.path.join(BASE_DIR, "api_reliability_monitor", "data", "observability.db")
+LLM_DB_PATH = os.path.join(BASE_DIR, "llm_observability_ollama", "data", "observability.db")
 
 def get_db_connection(db_path):
     # Create the directory if missing (Resilience for first-run)
@@ -143,9 +143,27 @@ def get_llm_traces():
     return traces
 
 # Mount the React frontend
-frontend_dist = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend", "dist")
+frontend_dist = os.path.join(BASE_DIR, "frontend", "dist")
+if not os.path.exists(frontend_dist):
+    alt_dist = os.path.join(os.getcwd(), "frontend", "dist")
+    if os.path.exists(alt_dist):
+        frontend_dist = alt_dist
+
 if os.path.exists(frontend_dist):
+    logger.info(f"Mounting static frontend assets from {frontend_dist}")
     app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="frontend")
+else:
+    logger.warning(f"Frontend dist directory not found at {frontend_dist}")
+    @app.get("/")
+    def read_root():
+        return {
+            "name": "OmniWatch Observer Platform",
+            "status": "operational",
+            "docs": "/docs",
+            "health": "/api/health",
+            "api_metrics": "/api/api-metrics",
+            "llm_traces": "/api/llm-traces"
+        }
 
 if __name__ == "__main__":
     import uvicorn
