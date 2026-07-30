@@ -20,8 +20,8 @@
 <br />
 <br />
 
-<a href="https://api-reliability-monitor-production.up.railway.app">
-  <img src="https://img.shields.io/badge/LIVE%20DEMO-🚀-brightgreen?style=for-the-badge&logo=rocket" alt="Live Demo" />
+<a href="https://render.com/deploy?repo=https://github.com/SAK-SHI14/OmniWatch-Observer-Platform">
+  <img src="https://render.com/images/deploy-to-render.svg" alt="Deploy to Render" />
 </a>
 
 </div>
@@ -191,22 +191,17 @@ collection:
 
 ---
 
-## ☁️ Deployment Readiness
+## ☁️ 1-Click Free Deployment
 
-Because OmniWatch separates the background polling processes from the web servers, cloud deployment requires routing distinct services.
+You can deploy the unified OmniWatch container (React Frontend + FastAPI Backend + Background Poller) with **1 click**:
 
-### Recommended Stack: Render.com or Railway.app
+[![Deploy to Render](https://render.com/images/deploy-to-render.svg)](https://render.com/deploy?repo=https://github.com/SAK-SHI14/OmniWatch-Observer-Platform)
 
-- **Frontend (Static Site):**
-  - Build Command: `npm run build`
-  - Output Directory: `dist`
-  - *Note: Remember to replace `http://localhost:8000` in `App.tsx` with your production backend URL.*
-- **Backend (Web Service):**
-  - Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
-  - **Crucial:** Attach a Persistent Volume Disk (e.g., `/data`) to ensure SQLite `.db` files survive container restarts.
-- **Poller (Background Worker):**
-  - Start Command: `python main.py`
-  - **Crucial:** Mount the *same* Persistent Volume Disk as the backend so both instances share the exact same `observability.db` file context securely.
+### Automatic Single-Container Architecture
+1. Click the **Deploy to Render** button above.
+2. Sign in to [Render.com](https://render.com/) with your GitHub account.
+3. Render automatically uses the repository's `render.yaml` & `Dockerfile` to build the React static bundle, launch the FastAPI server, and initialize the background API polling daemons.
+4. Your application will be live at `https://omniwatch-observer.onrender.com`!
 
 ---
 
