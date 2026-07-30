@@ -20,6 +20,10 @@
 <br />
 <br />
 
+<a href="https://omniwatch-observer-sakshi.onrender.com">
+  <img src="https://img.shields.io/badge/LIVE%20DEMO-🚀-brightgreen?style=for-the-badge&logo=rocket" alt="Live Demo" />
+</a>
+<br /><br />
 <a href="https://render.com/deploy?repo=https://github.com/SAK-SHI14/OmniWatch-Observer-Platform">
   <img src="https://render.com/images/deploy-to-render.svg" alt="Deploy to Render" />
 </a>
